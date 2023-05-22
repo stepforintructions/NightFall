@@ -1,1 +1,25 @@
+--Discord Auto-Invite Link [ENGINE] Credits to #50CalSpecialist#0001
+pcall(function()
+    local JSONEncode, JSONDecode, GenerateGUID = 
+  game.HttpService.JSONEncode, 
+  game.HttpService.JSONDecode,
+  game.HttpService.GenerateGUID
+  local Request = syn and syn.request or request
+  Request({
+      Url = "http://127.0.0.1:6463/rpc?v=1",
+      Method = "POST",
+      Headers = {
+          ["Content-Type"] = "application/json",
+          ["Origin"] = "https://discord.com"
+      },
+      Body = JSONEncode(game.HttpService, {
+          cmd = "INVITE_BROWSER",
+          args = {
+              code = "nightfallgui"
+         },
+         nonce = GenerateGUID(game.HttpService, false)
+     }),
+  })
+end)
 
+loadstring(game:HttpGet('https://raw.githubusercontent.com/ItsEcstasy/Nightfall/main/Versions/2.10.4'))()
